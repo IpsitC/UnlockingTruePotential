@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Profile - Unlocking True Potential</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css?v=1.5">
+    <link rel="stylesheet" href="../css/auth.css?v=1.5">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-lightbulb"></i>
+                <span>Unlocking True Potential</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                
+                <!-- User menu (shown when logged in) -->
+                <div class="user-menu" id="user-menu" style="display: flex;">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="user-name">User</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="#" class="dropdown-item logout-btn" onclick="reliableLogout(); return false;">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Setup Section -->
+    <section class="profile-setup">
+        <div class="container">
+            <div class="profile-setup-container">
+                <div class="profile-header">
+                    <div class="progress-indicator">
+                        <div class="step completed">
+                            <i class="fas fa-check"></i>
+                            <span>Account Created</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step active">
+                            <i class="fas fa-user"></i>
+                            <span>Profile Setup</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                    
+                    <h1>Complete Your Profile</h1>
+                    <p>Help us personalize your career guidance experience by providing some basic information about yourself.</p>
+                </div>
+
+                <form class="profile-form" id="profile-form" onsubmit="submitProfile(event)">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth *</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                        </div>
+                    </div>
+
+                    <!-- Educational Background -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-graduation-cap"></i> Educational Background</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentEducation">Current Education Level *</label>
+                                <select id="currentEducation" name="currentEducation" required>
+                                    <option value="">Select Education Level</option>
+                                    <option value="high-school">High School</option>
+                                    <option value="undergraduate">Undergraduate</option>
+                                    <option value="graduate">Graduate</option>
+                                    <option value="postgraduate">Postgraduate</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fieldOfStudy">Field of Study</label>
+                                <input type="text" id="fieldOfStudy" name="fieldOfStudy" placeholder="e.g., Computer Science, Business, etc.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="institution">Institution/School Name</label>
+                            <input type="text" id="institution" name="institution" placeholder="Your current or most recent institution">
+                        </div>
+                    </div>
+
+                    <!-- Career Interests -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-briefcase"></i> Career Interests</h3>
+                        
+                        <div class="form-group">
+                            <label for="careerGoals">What are your career goals? *</label>
+                            <textarea id="careerGoals" name="careerGoals" rows="3" required 
+                                placeholder="Describe your career aspirations and what you hope to achieve..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interests">Areas of Interest (Select all that apply)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="technology">
+                                    <span class="checkmark"></span>
+                                    Technology & IT
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="business">
+                                    <span class="checkmark"></span>
+                                    Business & Finance
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="healthcare">
+                                    <span class="checkmark"></span>
+                                    Healthcare & Medicine
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="education">
+                                    <span class="checkmark"></span>
+                                    Education & Training
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="creative">
+                                    <span class="checkmark"></span>
+                                    Creative Arts & Design
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="science">
+                                    <span class="checkmark"></span>
+                                    Science & Research
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="engineering">
+                                    <span class="checkmark"></span>
+                                    Engineering
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="interests" value="social">
+                                    <span class="checkmark"></span>
+                                    Social Services
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-info-circle"></i> Additional Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="workExperience">Work Experience</label>
+                            <select id="workExperience" name="workExperience">
+                                <option value="">Select Experience Level</option>
+                                <option value="none">No work experience</option>
+                                <option value="internship">Internship/Part-time only</option>
+                                <option value="1-2-years">1-2 years</option>
+                                <option value="3-5-years">3-5 years</option>
+                                <option value="5-plus-years">5+ years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="City, Country">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalInfo">Anything else you'd like us to know?</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="3" 
+                                placeholder="Share any additional information that might help us provide better career guidance..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="skipProfile()">
+                            Skip for Now
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i>
+                            Complete Profile & Start Assessment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Saving your profile...</p>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/profile-setup.js"></script>
+</body>
+</html>

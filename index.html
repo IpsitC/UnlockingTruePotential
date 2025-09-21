@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlocking True Potential - AI-Powered Career Navigation</title>
+    <meta name="description" content="Discover what you're meant for with free, AI-driven career guidance. Full career path recommendations, gamified learning, and realistic simulations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth-modal.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-lightbulb"></i>
+                <span>Unlocking True Potential</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#parents" class="nav-link">For Parents</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <!-- Authentication buttons (shown when not logged in) -->
+                <div class="auth-buttons" id="auth-buttons">
+                    <button id="nav-login-btn" class="btn btn-outline nav-auth" onclick="openAuthModal()">Login</button>
+                </div>
+            </div>  
+            </div>
+            
+            <!-- Right-side profile dropdown (hidden on home page) -->
+            <div class="profile-dropdown-container" id="user-menu" style="position: relative; margin-left: auto; display: none;">
+                <!-- Profile dropdown content hidden on home page -->
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">
+                    Discover What You're <span class="highlight">Meant For</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Free, AI-Driven Career Guidance with Full Career Path Recommendations, 
+                    Gamified Quests, Realistic Simulations, and Parent Support
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" onclick="startJourney()">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Journey
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="learnMore()">
+                        <i class="fas fa-play"></i>
+                        Learn More
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-label">Students Guided</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Career Paths</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="hero-illustration">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Analysis</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Career Growth</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-trophy"></i>
+                        <span>Achievements</span>
+                    </div>
+                    <div class="hero-image">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What We Provide</h2>
+                <p class="section-subtitle">
+                    Comprehensive tools and guidance to unlock your true potential
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">Self-Discovery Tests</h3>
+                    <p class="feature-description">
+                        Comprehensive 5-stage assessment covering personality, analytical skills, 
+                        communication, emotional intelligence, and practical simulations.
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Based Matching</h3>
+                    <p class="feature-description">
+                        Advanced AI algorithms analyze your skills, strengths, and values to 
+                        provide personalized career recommendations with high accuracy.
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="feature-title">Full Career Path Recommendations</h3>
+                    <p class="feature-description">
+                        Detailed roadmaps with tiered recommendations (S, A, B) showing 
+                        exactly what steps to take to reach your dream career.
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">Gamified Learning Paths</h3>
+                    <p class="feature-description">
+                        Interactive quests, XP points, badges, and real projects that make 
+                        learning engaging and track your progress effectively.
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="feature-title">Role Simulation</h3>
+                    <p class="feature-description">
+                        Experience realistic career scenarios with decision-making challenges, 
+                        time management, and role-specific tasks before committing.
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Parent Support Guide</h3>
+                    <p class="feature-description">
+                        Comprehensive resources for parents to understand the process and 
+                        effectively support their child's career discovery journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text" data-aos="fade-right">
+                    <h2 class="section-title">Why Choose Our Platform?</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Completely Free</h4>
+                                <p>Full access to all features without any hidden costs or premium tiers</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>AI-Powered & Personalized</h4>
+                                <p>Advanced algorithms provide tailored recommendations based on your unique profile</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>No Guesswork, Full Clarity</h4>
+                                <p>Clear, actionable insights with detailed explanations for every recommendation</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Gamified & Fun Learning</h4>
+                                <p>Engaging quests, badges, and interactive content make the journey enjoyable</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Real-World Simulation</h4>
+                                <p>Practice with realistic scenarios and earn certificates for completed paths</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-visual" data-aos="fade-left">
+                    <div class="benefits-illustration">
+                        <div class="benefit-badge badge-1">
+                            <i class="fas fa-star"></i>
+                            <span>Free Forever</span>
+                        </div>
+                        <div class="benefit-badge badge-2">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Powered</span>
+                        </div>
+                        <div class="benefit-badge badge-3">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">
+                    Your journey to career clarity in 5 simple steps
+                </p>
+            </div>
+            <div class="steps-container">
+                <div class="step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Register & Self-Discovery Test</h3>
+                        <p>Create your account and complete our comprehensive 5-stage assessment covering personality, skills, and preferences.</p>
+                    </div>
+                </div>
+                <div class="step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Generate Report & Recommendations</h3>
+                        <p>Receive your detailed analysis with tiered career recommendations (S, A, B) based on your unique profile.</p>
+                    </div>
+                </div>
+                <div class="step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Learning Path & Projects</h3>
+                        <p>Follow gamified learning modules, complete real projects, and earn badges as you progress toward your chosen career.</p>
+                    </div>
+                </div>
+                <div class="step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Career Simulation</h3>
+                        <p>Experience realistic role-specific scenarios to test your decision-making and validate your career choice.</p>
+                    </div>
+                </div>
+                <div class="step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Certificate & Ongoing Growth</h3>
+                        <p>Earn your completion certificate and continue growing with advanced modules and career updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-subtitle">
+                    See how students have transformed their career journey
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        <p>"I was completely lost about my career direction. This platform helped me discover my passion for UX design and provided a clear roadmap to get there!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <span>Now UX Designer at Tech Corp</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        <p>"The gamified learning made the whole process fun! I earned badges, completed real projects, and now I'm confident about my future in data science."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rahul Patel</h4>
+                            <span>Data Science Student</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-content">
+                        <p>"As a parent, I was worried about my daughter's career choices. This platform gave us both clarity and confidence in her decision to pursue medicine."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Mrs. Gupta</h4>
+                            <span>Parent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parent Explainer Section -->
+    <section class="parent-explainer" id="parents">
+        <div class="container">
+            <div class="parent-content">
+                <div class="parent-text" data-aos="fade-right">
+                    <h2 class="section-title">For Parents: Supporting Your Child's Journey</h2>
+                    <p class="section-subtitle">
+                        Understanding how our platform helps your child discover their true potential
+                    </p>
+                    <div class="parent-features">
+                        <div class="parent-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Safe & Secure</h4>
+                                <p>Complete privacy protection with secure data handling and no sharing with third parties</p>
+                            </div>
+                        </div>
+                        <div class="parent-feature">
+                            <i class="fas fa-chart-bar"></i>
+                            <div>
+                                <h4>Transparent Process</h4>
+                                <p>Full visibility into assessment methods, AI recommendations, and progress tracking</p>
+                            </div>
+                        </div>
+                        <div class="parent-feature">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Parent Involvement</h4>
+                                <p>Guidance on how to support your child's decisions and career exploration journey</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="openParentGuide()">
+                        <i class="fas fa-book"></i>
+                        Parent Guide
+                    </button>
+                </div>
+                <div class="parent-visual" data-aos="fade-left">
+                    <div class="parent-illustration">
+                        <i class="fas fa-family"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Unlock Your True Potential?</h2>
+                <p>Join thousands of students who have discovered their perfect career path</p>
+                <button class="btn btn-primary btn-large" onclick="startJourney()">
+                    <i class="fas fa-rocket"></i>
+                    Start Your Free Journey Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">
+                    Have questions? We're here to help you on your career discovery journey
+                </p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p>support@unlockingpotential.com</p>
+                            <small>We'll respond within 24 hours</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p>+91 9876543210</p>
+                            <small>Mon-Fri, 9 AM - 6 PM IST</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Visit Us</h4>
+                            <p>Mumbai, India</p>
+                            <small>Schedule an appointment</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form" onsubmit="submitContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <select id="contact-subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="career">Career Guidance</option>
+                                <option value="partnership">Partnership</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Unlocking True Potential</span>
+                    </div>
+                    <p>Empowering students to discover their true calling through AI-driven career guidance.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#" onclick="startJourney()">Take Test</a></li>
+                        <li><a href="#parents">For Parents</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#" onclick="openFAQ()">FAQ</a></li>
+                        <li><a href="#" onclick="openHelp()">Help Center</a></li>
+                        <li><a href="#" onclick="openPrivacy()">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> support@unlockingpotential.com</p>
+                        <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Unlocking True Potential. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Firebase SDK (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+
+    <!-- App Firebase config/services -->
+    <script src="js/google-config.js"></script>
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Auth modal and app scripts -->
+    <script src="js/auth-modal.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Dropdown functionality script -->
+    <script>
+        function toggleDropdown() {
+            const menu = document.getElementById('profileMenu');
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            if (menu) {
+                const isVisible = menu.style.display === 'block';
+                
+                if (isVisible) {
+                    menu.style.opacity = '0';
+                    menu.style.transform = 'translateY(-10px)';
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    setTimeout(() => { menu.style.display = 'none'; }, 300);
+                } else {
+                    menu.style.display = 'block';
+                    setTimeout(() => {
+                        menu.style.opacity = '1';
+                        menu.style.transform = 'translateY(0)';
+                        if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    }, 10);
+                }
+            }
+        }
+        
+        document.addEventListener('click', function(e) {
+            const profileContainer = document.querySelector('.profile-dropdown-container');
+            const menu = document.getElementById('profileMenu');
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            if (profileContainer && !profileContainer.contains(e.target) && menu) {
+                menu.style.opacity = '0';
+                menu.style.transform = 'translateY(-10px)';
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+                setTimeout(() => { menu.style.display = 'none'; }, 300);
+            }
+        });
+    </script>
+</body>
+</html>

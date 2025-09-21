@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path - Unlocking True Potential</title>
+    <meta name="description" content="Gamified learning journey with quests, badges, and real projects">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/learning-path.css?v=1.2">
+    <link rel="stylesheet" href="../css/auth-modal.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-lightbulb"></i>
+                <span>Unlocking True Potential</span>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-stats">
+                    <div class="nav-stat">
+                        <i class="fas fa-star"></i>
+                        <span id="nav-xp">2,450</span>
+                    </div>
+                    <div class="nav-stat">
+                        <i class="fas fa-fire"></i>
+                        <span id="nav-streak">7</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Right-side profile dropdown host (shown when logged in) -->
+            <div class="profile-dropdown-container" id="user-menu" style="position: relative; margin-left: auto;">
+                <div class="profile-trigger" onclick="toggleDropdown()" style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 12px; border-radius: 8px; transition: all 0.3s ease;">
+                    <div class="profile-circle" style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">IC</div>
+                    <span class="profile-name" style="font-weight: 600; color: #374151; margin-left: 6px;">Ipsitneel Chaudhuri</span>
+                    <i class="fas fa-chevron-down dropdown-arrow" style="font-size: 0.75rem; color: #6b7280; transition: transform 0.3s ease; margin-left: 4px;"></i>
+                </div>
+                
+                <div class="profile-menu" id="profileMenu" style="position: absolute; top: 100%; right: 0; background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); min-width: 220px; z-index: 1000; padding: 8px 0; display: none; opacity: 0; transform: translateY(-10px); transition: all 0.3s ease;">
+                    <a href="dashboard.html" class="menu-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #374151; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="results.html" class="menu-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #374151; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Results</span>
+                    </a>
+                    <a href="learning-path.html" class="menu-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #374151; text-decoration: none; transition: all 0.3s ease; background: linear-gradient(135deg, #6366f1, #4f46e5); color: white;">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Learning</span>
+                    </a>
+                    <a href="simulation.html" class="menu-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #374151; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Career Simulation</span>
+                    </a>
+                    <div style="height: 1px; background: rgba(0,0,0,0.08); margin: 8px 0;"></div>
+                    <a href="#" onclick="handleLogout(); return false;" class="menu-item logout-btn" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #dc3545; text-decoration: none; transition: all 0.3s ease;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Learning Path Container -->
+    <div class="learning-container">
+        <!-- Path Header -->
+        <section class="path-header-section">
+            <div class="container">
+                <div class="path-header-content">
+                    <div class="path-info">
+                        <div class="path-breadcrumb">
+                            <span>Career Path</span>
+                            <i class="fas fa-chevron-right"></i>
+                            <span id="current-career">Data Scientist</span>
+                        </div>
+                        <h1>Master Data Science</h1>
+                        <p class="path-description">
+                            Transform raw data into actionable insights through statistical analysis, 
+                            machine learning, and data visualization techniques.
+                        </p>
+                        <div class="path-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>6-12 months</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-signal"></i>
+                                <span>Intermediate</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>15,000+ learners</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="path-progress-card">
+                        <div class="progress-header">
+                            <h3>Your Progress</h3>
+                            <span class="progress-percentage">70%</span>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Remaining</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Level 3</span>
+                                <span class="stat-label">Current</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Modules -->
+        <section class="modules-section">
+            <div class="container">
+                <div class="modules-header">
+                    <h2>Learning Modules</h2>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active" onclick="switchView('path')">
+                            <i class="fas fa-route"></i>
+                            Path View
+                        </button>
+                        <button class="toggle-btn" onclick="switchView('grid')">
+                            <i class="fas fa-th"></i>
+                            Grid View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Path View -->
+                <div class="learning-path-view active" id="path-view">
+                    <div class="path-timeline">
+                        <!-- Module 1 -->
+                        <div class="module-node completed">
+                            <div class="module-connector"></div>
+                            <div class="module-card">
+                                <div class="module-status">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="module-content">
+                                    <h3>Python Fundamentals</h3>
+                                    <p>Master Python programming basics for data science</p>
+                                    <div class="module-meta">
+                                        <span><i class="fas fa-clock"></i> 2 weeks</span>
+                                        <span><i class="fas fa-star"></i> 300 XP</span>
+                                    </div>
+                                    <div class="module-badges">
+                                        <span class="badge earned">Python Basics</span>
+                                        <span class="badge earned">First Steps</span>
+                                    </div>
+                                </div>
+                                <!-- Review button removed per request -->
+                            </div>
+                        </div>
+
+                        <!-- Module 2 -->
+                        <div class="module-node completed">
+                            <div class="module-connector"></div>
+                            <div class="module-card">
+                                <div class="module-status">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="module-content">
+                                    <h3>Data Analysis with Pandas</h3>
+                                    <p>Learn data manipulation and analysis using Pandas library</p>
+                                    <div class="module-meta">
+                                        <span><i class="fas fa-clock"></i> 3 weeks</span>
+                                        <span><i class="fas fa-star"></i> 450 XP</span>
+                                    </div>
+                                    <div class="module-badges">
+                                        <span class="badge earned">Data Explorer</span>
+                                        <span class="badge earned">Pandas Pro</span>
+                                    </div>
+                                </div>
+                                <!-- Review button removed per request -->
+                            </div>
+                        </div>
+
+                        <!-- Module 3 - Current -->
+                        <div class="module-node current">
+                            <div class="module-connector"></div>
+                            <div class="module-card current-module">
+                                <div class="module-status" onclick="continueModule(3)" role="button" aria-label="Continue module">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <div class="module-content">
+                                    <h3>Statistical Analysis</h3>
+                                    <p>Master descriptive and inferential statistics for data science</p>
+                                    <div class="module-meta">
+                                        <span><i class="fas fa-clock"></i> 4 weeks</span>
+                                        <span><i class="fas fa-star"></i> 600 XP</span>
+                                    </div>
+                                    <div class="module-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 45%"></div>
+                                        </div>
+                                        <span>45% Complete</span>
+                                    </div>
+                                    <div class="current-lesson">
+                                        <i class="fas fa-bookmark"></i>
+                                        <span>Current: Probability Distributions</span>
+                                    </div>
+                                </div>
+                                <!-- Continue button removed per request; use the round play button on the right -->
+                            </div>
+                        </div>
+
+                        <!-- Module 4 -->
+                        <div class="module-node locked">
+                            <div class="module-connector"></div>
+                            <div class="module-card">
+                                <div class="module-status">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="module-content">
+                                    <h3>Data Visualization</h3>
+                                    <p>Create compelling visualizations with Matplotlib and Seaborn</p>
+                                    <div class="module-meta">
+                                        <span><i class="fas fa-clock"></i> 3 weeks</span>
+                                        <span><i class="fas fa-star"></i> 500 XP</span>
+                                    </div>
+                                    <div class="unlock-requirement">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Complete Statistical Analysis to unlock</span>
+                                    </div>
+                                </div>
+                                <!-- Locked button removed per request -->
+                            </div>
+                        </div>
+
+                        <!-- Module 5 -->
+                        <div class="module-node locked">
+                            <div class="module-connector"></div>
+                            <div class="module-card">
+                                <div class="module-status">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="module-content">
+                                    <h3>Machine Learning Basics</h3>
+                                    <p>Introduction to supervised and unsupervised learning algorithms</p>
+                                    <div class="module-meta">
+                                        <span><i class="fas fa-clock"></i> 5 weeks</span>
+                                        <span><i class="fas fa-star"></i> 800 XP</span>
+                                    </div>
+                                    <div class="unlock-requirement">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Complete Data Visualization to unlock</span>
+                                    </div>
+                                </div>
+                                <!-- Locked button removed per request -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid View -->
+                <div class="learning-grid-view" id="grid-view">
+                    <div class="modules-grid">
+                        <!-- Grid modules will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Quest Section -->
+        <section class="quest-section">
+            <div class="container">
+                <div class="quest-header">
+                    <h2><i class="fas fa-flag"></i> Current Quest</h2>
+                    <div class="quest-timer">
+                        <i class="fas fa-clock"></i>
+                        <span>2 days remaining</span>
+                    </div>
+                </div>
+                
+                <div class="quest-card">
+                    <div class="quest-info">
+                        <h3>Statistical Analysis Master</h3>
+                        <p>Complete all lessons in the Statistical Analysis module and pass the final assessment</p>
+                        <div class="quest-rewards">
+                            <div class="reward">
+                                <i class="fas fa-star"></i>
+                                <span>600 XP</span>
+                            </div>
+                            <div class="reward">
+                                <i class="fas fa-trophy"></i>
+                                <span>Statistics Badge</span>
+                            </div>
+                            <div class="reward">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quest-progress">
+                        <div class="progress-circle">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                <circle cx="50" cy="50" r="40" stroke="#6366f1" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251" stroke-dashoffset="138" class="progress-bar"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-percentage">45%</span>
+                            </div>
+                        </div>
+                        <div class="quest-tasks">
+                            <div class="task completed">
+                                <i class="fas fa-check"></i>
+                                <span>Complete Descriptive Statistics</span>
+                            </div>
+                            <div class="task completed">
+                                <i class="fas fa-check"></i>
+                                <span>Learn Probability Theory</span>
+                            </div>
+                            <div class="task current">
+                                <i class="fas fa-circle"></i>
+                                <span>Master Probability Distributions</span>
+                            </div>
+                            <div class="task">
+                                <i class="fas fa-circle"></i>
+                                <span>Hypothesis Testing</span>
+                            </div>
+                            <div class="task">
+                                <i class="fas fa-circle"></i>
+                                <span>Final Assessment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <div class="container">
+                <h2>Real-World Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card completed">
+                        <div class="project-status">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Completed</span>
+                        </div>
+                        <div class="project-content">
+                            <h3>Sales Data Analysis</h3>
+                            <p>Analyze e-commerce sales data to identify trends and patterns</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">Data Cleaning</span>
+                            </div>
+                            <div class="project-reward">
+                                <i class="fas fa-star"></i>
+                                <span>250 XP earned</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="viewProject(1)">
+                            <i class="fas fa-eye"></i>
+                            View Project
+                        </button>
+                    </div>
+
+                    <div class="project-card available">
+                        <div class="project-status">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Available</span>
+                        </div>
+                        <div class="project-content">
+                            <h3>Customer Segmentation</h3>
+                            <p>Use statistical analysis to segment customers based on behavior</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Statistics</span>
+                                <span class="skill-tag">Clustering</span>
+                                <span class="skill-tag">Analysis</span>
+                            </div>
+                            <div class="project-reward">
+                                <i class="fas fa-star"></i>
+                                <span>400 XP potential</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="startProject(2)">
+                            <i class="fas fa-play"></i>
+                            Start Project
+                        </button>
+                    </div>
+
+                    <div class="project-card locked">
+                        <div class="project-status">
+                            <i class="fas fa-lock"></i>
+                            <span>Locked</span>
+                        </div>
+                        <div class="project-content">
+                            <h3>Predictive Modeling</h3>
+                            <p>Build a machine learning model to predict customer churn</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">ML</span>
+                                <span class="skill-tag">Prediction</span>
+                                <span class="skill-tag">Modeling</span>
+                            </div>
+                            <div class="unlock-requirement">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Complete Machine Learning module</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-disabled" disabled>
+                            <i class="fas fa-lock"></i>
+                            Locked
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section class="leaderboard-section">
+            <div class="container">
+                <div class="leaderboard-header">
+                    <h2><i class="fas fa-crown"></i> Weekly Leaderboard</h2>
+                    <div class="leaderboard-filter">
+                        <select onchange="filterLeaderboard(this.value)">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="all">All Time</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="leaderboard-card">
+                    <div class="leaderboard-list" id="leaderboard-list">
+                        <!-- Leaderboard entries will be loaded here -->
+                    </div>
+                    <div class="your-rank">
+                        <div class="rank-info">
+                            <span class="rank-position">#12</span>
+                            <div class="rank-details">
+                                <span class="rank-name">You (Alex Johnson)</span>
+                                <span class="rank-xp">2,450 XP this week</span>
+                            </div>
+                        </div>
+                        <div class="rank-progress">
+                            <span>350 XP to next rank</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/auth-modal.js"></script>
+    <script src="../js/learning-path.js?v=1.1"></script>
+    
+    <!-- Dropdown functionality script -->
+    <script>
+        function toggleDropdown() {
+            const menu = document.getElementById('profileMenu');
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            if (menu) {
+                const isVisible = menu.style.display === 'block';
+                
+                if (isVisible) {
+                    menu.style.opacity = '0';
+                    menu.style.transform = 'translateY(-10px)';
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    setTimeout(() => { menu.style.display = 'none'; }, 300);
+                } else {
+                    menu.style.display = 'block';
+                    setTimeout(() => {
+                        menu.style.opacity = '1';
+                        menu.style.transform = 'translateY(0)';
+                        if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    }, 10);
+                }
+            }
+        }
+        
+        document.addEventListener('click', function(e) {
+            const profileContainer = document.querySelector('.profile-dropdown-container');
+            const menu = document.getElementById('profileMenu');
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            if (profileContainer && !profileContainer.contains(e.target) && menu) {
+                menu.style.opacity = '0';
+                menu.style.transform = 'translateY(-10px)';
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+                setTimeout(() => { menu.style.display = 'none'; }, 300);
+            }
+        });
+        
+        // Add hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const menuItems = document.querySelectorAll('.menu-item');
+                menuItems.forEach(item => {
+                    const isLogout = item.classList.contains('logout-btn');
+                    const originalStyle = item.getAttribute('style') || '';
+                    
+                    item.addEventListener('mouseenter', () => {
+                        if (isLogout) {
+                            item.style.background = '#fee';
+                        } else if (!originalStyle.includes('background: linear-gradient')) {
+                            item.style.background = 'rgba(99, 102, 241, 0.1)';
+                            item.style.color = '#6366f1';
+                        }
+                        item.style.transform = 'translateX(4px)';
+                    });
+                    
+                    item.addEventListener('mouseleave', () => {
+                        if (isLogout) {
+                            item.style.background = 'transparent';
+                            item.style.color = '#dc3545';
+                        } else if (!originalStyle.includes('background: linear-gradient')) {
+                            item.style.background = 'transparent';
+                            item.style.color = '#374151';
+                        }
+                        item.style.transform = 'translateX(0)';
+                    });
+                });
+            }, 200);
+        });
+    </script>
+</body>
+</html>

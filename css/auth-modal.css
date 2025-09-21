@@ -1,0 +1,29 @@
+:root{--am-bg:#0b0b0d;--am-surface:#121316;--am-text:#e5e7eb;--am-muted:#9ca3af;--am-primary:#f97316;--am-primary-600:#ea580c;--am-ring:#1f2937}
+.utp-auth-modal{position:fixed;inset:0;z-index:1000}
+.utp-auth-modal.hidden{display:none}
+.utp-auth-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(2px)}
+.utp-auth-dialog{position:relative;margin:5vh auto 0 auto;width:min(520px,92vw);background:var(--am-bg);border:1px solid #1f2937;border-radius:12px;color:var(--am-text);box-shadow:0 20px 60px rgba(0,0,0,.4);padding:28px 28px 24px}
+.utp-auth-close{position:absolute;top:10px;right:12px;background:transparent;border:none;color:var(--am-muted);font-size:22px;cursor:pointer}
+.utp-auth-close:hover{color:#fff}
+.utp-auth-header{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;margin-top:8px}
+.utp-auth-brand{width:48px;height:48px;border-radius:10px;background:#0f172a;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:inset 0 0 0 1px #1f2937}
+.utp-auth-header h3{margin:0;font-size:22px;color:#fff}
+.utp-auth-sub{margin:0;color:var(--am-muted)}
+.utp-auth-body{margin-top:18px}
+.utp-btn{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:10px;padding:12px 14px;border:none;cursor:pointer;font-weight:600}
+.utp-btn-google{background:#1f2937;color:#e5e7eb}
+.utp-btn-google i{color:#fff}
+.utp-btn-google:hover{background:#2b3545}
+.utp-auth-sep{display:flex;align-items:center;gap:8px;margin:16px 0;color:var(--am-muted)}
+.utp-auth-sep::before,.utp-auth-sep::after{content:'';height:1px;background:#1f2937;flex:1}
+.utp-input{display:flex;align-items:center;gap:10px;background:var(--am-surface);border:1px solid #1f2937;border-radius:10px;padding:10px 12px;color:#fff;margin-bottom:12px}
+.utp-input input{flex:1;background:transparent;border:none;outline:none;color:#fff}
+.utp-input i{color:var(--am-muted)}
+.utp-eye{background:transparent;border:none;color:var(--am-muted);cursor:pointer}
+.utp-auth-row{display:flex;justify-content:flex-end}
+.utp-link{color:#f59e0b;text-decoration:none}
+.utp-link:hover{text-decoration:underline}
+.utp-btn-primary{background:var(--am-primary);color:#111827}
+.utp-btn-primary:hover{background:var(--am-primary-600)}
+.utp-auth-alt{margin-top:12px;color:var(--am-muted);text-align:center}
+@media(max-width:480px){.utp-auth-dialog{margin-top:3vh;padding:20px}}

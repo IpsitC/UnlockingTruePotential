@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Test - Unlocking True Potential</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-item {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-item.success {
+            border-color: #4CAF50;
+            background: #f8fff8;
+        }
+        .test-item.error {
+            border-color: #f44336;
+            background: #fff8f8;
+        }
+        .test-item.pending {
+            border-color: #ff9800;
+            background: #fffaf0;
+        }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5856eb;
+        }
+        .log-output {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .status.success { background: #4CAF50; color: white; }
+        .status.error { background: #f44336; color: white; }
+        .status.pending { background: #ff9800; color: white; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Setup Test Suite</h1>
+        <p>This page will test if Firebase, Google Auth, and Vertex AI are properly configured.</p>
+        
+        <div class="test-item pending" id="firebase-test">
+            <h3>🔥 Firebase Connection Test <span class="status pending" id="firebase-status">Pending</span></h3>
+            <p>Testing Firebase initialization and connection...</p>
+            <button onclick="testFirebase()">Test Firebase</button>
+            <div class="log-output" id="firebase-log"></div>
+        </div>
+        
+        <div class="test-item pending" id="auth-test">
+            <h3>🔐 Google Authentication Test <span class="status pending" id="auth-status">Pending</span></h3>
+            <p>Testing Google Sign-In integration...</p>
+            <button onclick="testGoogleAuth()">Test Google Auth</button>
+            <div class="log-output" id="auth-log"></div>
+        </div>
+        
+        <div class="test-item pending" id="firestore-test">
+            <h3>📊 Firestore Database Test <span class="status pending" id="firestore-status">Pending</span></h3>
+            <p>Testing Firestore read/write operations...</p>
+            <button onclick="testFirestore()">Test Firestore</button>
+            <div class="log-output" id="firestore-log"></div>
+        </div>
+        
+        <div class="test-item pending" id="vertexai-test">
+            <h3>🤖 Vertex AI Test <span class="status pending" id="vertexai-status">Pending</span></h3>
+            <p>Testing AI recommendation generation...</p>
+            <button onclick="testVertexAI()">Test Vertex AI</button>
+            <div class="log-output" id="vertexai-log"></div>
+        </div>
+        
+        <div class="test-item" id="overall-status">
+            <h3>📋 Overall Status</h3>
+            <p id="overall-message">Click the test buttons above to check your setup.</p>
+            <button onclick="runAllTests()">Run All Tests</button>
+            <button onclick="exportTestResults()">Export Results</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/google-config.js"></script>
+    <script src="js/firebase-config.js"></script>
+
+    <script>
+        let testResults = {};
+
+        function updateTestStatus(testId, status, message) {
+            const testItem = document.getElementById(testId + '-test');
+            const statusElement = document.getElementById(testId + '-status');
+            const logElement = document.getElementById(testId + '-log');
+            
+            testItem.className = 'test-item ' + status;
+            statusElement.className = 'status ' + status;
+            statusElement.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+            
+            logElement.innerHTML += `<div>[${new Date().toLocaleTimeString()}] ${message}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+            
+            testResults[testId] = { status, message, timestamp: new Date().toISOString() };
+        }
+
+        async function testFirebase() {
+            updateTestStatus('firebase', 'pending', 'Starting Firebase test...');
+            
+            try {
+                if (typeof firebase === 'undefined') {
+                    throw new Error('Firebase SDK not loaded');
+                }
+                
+                updateTestStatus('firebase', 'pending', 'Firebase SDK loaded successfully');
+                
+                if (window.FirebaseService) {
+                    const initialized = await window.FirebaseService.initialize();
+                    if (initialized) {
+                        updateTestStatus('firebase', 'success', 'Firebase initialized successfully!');
+                    } else {
+                        updateTestStatus('firebase', 'error', 'Firebase initialization failed');
+                    }
+                } else {
+                    updateTestStatus('firebase', 'error', 'FirebaseService not available');
+                }
+                
+            } catch (error) {
+                updateTestStatus('firebase', 'error', `Firebase test failed: ${error.message}`);
+            }
+        }
+
+        async function testGoogleAuth() {
+            updateTestStatus('auth', 'pending', 'Starting Google Auth test...');
+            
+            try {
+                const auth = window.FirebaseService?.auth();
+                if (!auth) {
+                    throw new Error('Firebase Auth not initialized');
+                }
+                
+                updateTestStatus('auth', 'pending', 'Firebase Auth available');
+                
+                // Check if user is already signed in
+                const currentUser = auth.currentUser;
+                if (currentUser) {
+                    updateTestStatus('auth', 'success', `User already signed in: ${currentUser.email}`);
+                } else {
+                    updateTestStatus('auth', 'pending', 'No user signed in. Click "Continue with Google" on auth page to test.');
+                }
+                
+                // Test auth state listener
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        updateTestStatus('auth', 'success', `Auth state changed: User signed in (${user.email})`);
+                    } else {
+                        updateTestStatus('auth', 'pending', 'Auth state changed: User signed out');
+                    }
+                });
+                
+            } catch (error) {
+                updateTestStatus('auth', 'error', `Google Auth test failed: ${error.message}`);
+            }
+        }
+
+        async function testFirestore() {
+            updateTestStatus('firestore', 'pending', 'Starting Firestore test...');
+            
+            try {
+                const db = window.FirebaseService?.db();
+                if (!db) {
+                    throw new Error('Firestore not initialized');
+                }
+                
+                updateTestStatus('firestore', 'pending', 'Firestore database available');
+                
+                // Test write operation (to a test collection)
+                const testDoc = {
+                    message: 'Test document',
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    testId: Date.now()
+                };
+                
+                await db.collection('test').add(testDoc);
+                updateTestStatus('firestore', 'pending', 'Test document written successfully');
+                
+                // Test read operation
+                const snapshot = await db.collection('test').limit(1).get();
+                if (!snapshot.empty) {
+                    updateTestStatus('firestore', 'success', 'Firestore read/write operations successful!');
+                } else {
+                    updateTestStatus('firestore', 'error', 'Failed to read test document');
+                }
+                
+            } catch (error) {
+                updateTestStatus('firestore', 'error', `Firestore test failed: ${error.message}`);
+            }
+        }
+
+        async function testVertexAI() {
+            updateTestStatus('vertexai', 'pending', 'Starting Vertex AI test...');
+            
+            try {
+                if (!window.VertexAIService) {
+                    throw new Error('VertexAIService not available');
+                }
+                
+                updateTestStatus('vertexai', 'pending', 'VertexAI service available');
+                
+                // Test AI recommendation generation (will use fallback if API not configured)
+                const mockProfile = {
+                    displayName: 'Test User',
+                    interests: 'technology, problem-solving'
+                };
+                
+                const mockAssessment = {
+                    scores: {
+                        analytical: 85,
+                        creative: 70,
+                        leadership: 75
+                    }
+                };
+                
+                const recommendations = await window.VertexAIService.generateCareerRecommendations(
+                    mockProfile, 
+                    mockAssessment
+                );
+                
+                if (recommendations && recommendations.recommendations) {
+                    updateTestStatus('vertexai', 'success', `AI recommendations generated: ${recommendations.recommendations.length} careers suggested`);
+                } else {
+                    updateTestStatus('vertexai', 'error', 'No recommendations generated');
+                }
+                
+            } catch (error) {
+                updateTestStatus('vertexai', 'error', `Vertex AI test failed: ${error.message}`);
+            }
+        }
+
+        async function runAllTests() {
+            updateTestStatus('firebase', 'pending', 'Running all tests...');
+            await testFirebase();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testGoogleAuth();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testFirestore();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testVertexAI();
+            
+            // Update overall status
+            const results = Object.values(testResults);
+            const successCount = results.filter(r => r.status === 'success').length;
+            const errorCount = results.filter(r => r.status === 'error').length;
+            
+            const overallMessage = document.getElementById('overall-message');
+            if (errorCount === 0) {
+                overallMessage.innerHTML = `🎉 All tests passed! (${successCount}/${results.length}) Your setup is ready!`;
+                overallMessage.style.color = '#4CAF50';
+            } else {
+                overallMessage.innerHTML = `⚠️ ${errorCount} test(s) failed. Check the setup guide for troubleshooting.`;
+                overallMessage.style.color = '#f44336';
+            }
+        }
+
+        function exportTestResults() {
+            const results = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                url: window.location.href,
+                tests: testResults
+            };
+            
+            const blob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `utp-test-results-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Auto-run Firebase test on page load
+        window.addEventListener('load', () => {
+            setTimeout(testFirebase, 1000);
+        });
+    </script>
+</body>
+</html>

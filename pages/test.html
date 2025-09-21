@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Discovery Test - Unlocking True Potential</title>
+    <meta name="description" content="Complete our comprehensive 5-stage self-discovery test to unlock your career potential">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/test.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-lightbulb"></i>
+                <span>Unlocking True Potential</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <div class="test-progress">
+                    <span class="progress-text">Stage <span id="current-stage">1</span> of 5</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Test Container -->
+    <div class="test-container">
+        <!-- Welcome Screen -->
+        <div class="test-screen active" id="welcome-screen">
+            <div class="welcome-content">
+                <div class="welcome-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h1>Welcome to Your Self-Discovery Journey!</h1>
+                <p class="welcome-subtitle">
+                    You're about to embark on a comprehensive assessment that will help us understand your unique strengths, 
+                    interests, and potential career paths.
+                </p>
+                
+                <div class="test-stages">
+                    <h3>What to Expect:</h3>
+                    <div class="stages-grid">
+                        <div class="stage-preview">
+                            <div class="stage-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h4>Self-Awareness</h4>
+                            <p>Personality traits, interests, and learning style assessment</p>
+                        </div>
+                        <div class="stage-preview">
+                            <div class="stage-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Analytical Skills</h4>
+                            <p>Logic puzzles, problem-solving, and reasoning tasks</p>
+                        </div>
+                        <div class="stage-preview">
+                            <div class="stage-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4>Communication</h4>
+                            <p>Writing skills, expression, and comprehension evaluation</p>
+                        </div>
+                        <div class="stage-preview">
+                            <div class="stage-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Emotional Intelligence</h4>
+                            <p>Empathy, stress handling, and interpersonal skills</p>
+                        </div>
+                        <div class="stage-preview">
+                            <div class="stage-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h4>Interactive Simulation</h4>
+                            <p>Real-time decision making and strategic thinking</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>
+                        <h4>Important: Be Honest!</h4>
+                        <p>Your honest answers help us provide the most accurate career guidance. There are no right or wrong answers - just be yourself!</p>
+                    </div>
+                </div>
+
+                <div class="welcome-actions">
+                    <button class="btn btn-primary btn-large" onclick="startTest()">
+                        <i class="fas fa-play"></i>
+                        Begin Assessment
+                    </button>
+                    <button class="btn btn-secondary" onclick="goHome()">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 1: Self-Awareness -->
+        <div class="test-screen" id="stage-1">
+            <div class="stage-header">
+                <div class="stage-info">
+                    <h2><i class="fas fa-user"></i> Stage 1: Self-Awareness</h2>
+                    <p>Help us understand your personality, interests, and learning preferences</p>
+                </div>
+                <div class="stage-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-1">15:00</span>
+                </div>
+            </div>
+
+            <div class="questions-container" id="questions-1">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+
+            <div class="stage-navigation">
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn-1" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <div class="question-indicator">
+                    <span id="question-number-1">1</span> of <span id="total-questions-1">20</span>
+                </div>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn-1">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stage 2: Analytical Skills -->
+        <div class="test-screen" id="stage-2">
+            <div class="stage-header">
+                <div class="stage-info">
+                    <h2><i class="fas fa-brain"></i> Stage 2: Analytical & Problem-Solving</h2>
+                    <p>Test your logical reasoning, pattern recognition, and problem-solving abilities</p>
+                </div>
+                <div class="stage-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-2">20:00</span>
+                </div>
+            </div>
+
+            <div class="questions-container" id="questions-2">
+                <!-- Analytical questions will be loaded here -->
+            </div>
+
+            <div class="stage-navigation">
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn-2" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <div class="question-indicator">
+                    <span id="question-number-2">1</span> of <span id="total-questions-2">15</span>
+                </div>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn-2">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stage 3: Communication -->
+        <div class="test-screen" id="stage-3">
+            <div class="stage-header">
+                <div class="stage-info">
+                    <h2><i class="fas fa-comments"></i> Stage 3: Communication & Writing</h2>
+                    <p>Evaluate your written communication, comprehension, and expression skills</p>
+                </div>
+                <div class="stage-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-3">25:00</span>
+                </div>
+            </div>
+
+            <div class="questions-container" id="questions-3">
+                <!-- Communication questions will be loaded here -->
+            </div>
+
+            <div class="stage-navigation">
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn-3" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <div class="question-indicator">
+                    <span id="question-number-3">1</span> of <span id="total-questions-3">10</span>
+                </div>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn-3">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stage 4: Emotional Intelligence -->
+        <div class="test-screen" id="stage-4">
+            <div class="stage-header">
+                <div class="stage-info">
+                    <h2><i class="fas fa-heart"></i> Stage 4: Emotional Intelligence</h2>
+                    <p>Assess your empathy, self-awareness, and interpersonal skills</p>
+                </div>
+                <div class="stage-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-4">15:00</span>
+                </div>
+            </div>
+
+            <div class="questions-container" id="questions-4">
+                <!-- EQ questions will be loaded here -->
+            </div>
+
+            <div class="stage-navigation">
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn-4" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <div class="question-indicator">
+                    <span id="question-number-4">1</span> of <span id="total-questions-4">12</span>
+                </div>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn-4">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stage 5: Interactive Simulation -->
+        <div class="test-screen" id="stage-5">
+            <div class="stage-header">
+                <div class="stage-info">
+                    <h2><i class="fas fa-gamepad"></i> Stage 5: Interactive Simulation</h2>
+                    <p>Experience real-world scenarios and demonstrate your decision-making skills</p>
+                </div>
+                <div class="stage-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-5">30:00</span>
+                </div>
+            </div>
+
+            <div class="simulation-container" id="simulation-5">
+                <!-- Interactive simulation will be loaded here -->
+            </div>
+
+            <div class="stage-navigation">
+                <button class="btn btn-secondary" onclick="previousSimulation()" id="prev-btn-5" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <div class="simulation-indicator">
+                    Scenario <span id="scenario-number-5">1</span> of <span id="total-scenarios-5">5</span>
+                </div>
+                <button class="btn btn-primary" onclick="nextSimulation()" id="next-btn-5">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Completion Screen -->
+        <div class="test-screen" id="completion-screen">
+            <div class="completion-content">
+                <div class="completion-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Congratulations!</h1>
+                <p class="completion-subtitle">
+                    You've successfully completed all 5 stages of the self-discovery assessment. 
+                    Our AI is now analyzing your responses to generate your personalized career recommendations.
+                </p>
+
+                <div class="completion-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span class="stat-label">Time Taken</span>
+                        <span class="stat-value" id="total-time">45 minutes</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-tasks"></i>
+                        <span class="stat-label">Questions Answered</span>
+                        <span class="stat-value" id="total-answered">62/62</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="stat-label">Completion Rate</span>
+                        <span class="stat-value">100%</span>
+                    </div>
+                </div>
+
+                <div class="processing-animation">
+                    <div class="processing-spinner"></div>
+                    <p>Generating your personalized career report...</p>
+                </div>
+
+                <div class="completion-actions">
+                    <button class="btn btn-primary btn-large" onclick="viewResults()" id="view-results-btn" disabled>
+                        <i class="fas fa-chart-bar"></i>
+                        View My Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Check if user has completed profile before allowing test
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = UTPApp.getUserData();
+            
+            if (!userData) {
+                // User not authenticated
+                UTPApp.showNotification('Please sign in to take the assessment', 'error');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 1200);
+                return;
+            }
+            
+            if (!userData.profileCompleted && !userData.profileSkipped) {
+                // Profile not completed
+                UTPApp.showNotification('Please complete your profile first', 'info');
+                setTimeout(() => {
+                    window.location.href = 'profile-setup.html';
+                }, 2000);
+                return;
+            }
+            
+            // Profile completed or skipped, allow test
+            console.log('Profile check passed, loading test...');
+        });
+    </script>
+    <script src="../js/test.js?v=1.1"></script>
+</body>
+</html>

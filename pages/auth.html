@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Unlocking True Potential - Authentication</title>
+    <meta name="description" content="Create your account to start your career discovery journey with AI-powered guidance.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Unlocking True Potential</span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <a href="../index.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Authentication Container -->
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <!-- Welcome Section -->
+            <div class="auth-welcome">
+                <div class="welcome-content">
+                    <h1>Welcome to Your Journey</h1>
+                    <p>Join thousands of students who have discovered their true potential through our AI-powered career guidance platform.</p>
+                    
+                    <div class="welcome-features">
+                        <div class="welcome-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Free Platform</span>
+                        </div>
+                        <div class="welcome-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>AI-Powered Recommendations</span>
+                        </div>
+                        <div class="welcome-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Personalized Learning Paths</span>
+                        </div>
+                        <div class="welcome-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Career Simulations</span>
+                        </div>
+                    </div>
+                    
+                    <div class="welcome-stats">
+                        <div class="stat">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">Students Guided</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Authentication Forms -->
+            <div class="auth-forms">
+                <!-- Login/Register Toggle -->
+                <div class="auth-toggle">
+                    <button class="toggle-btn active" data-form="register">New User</button>
+                    <button class="toggle-btn" data-form="login">Returning User</button>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="auth-form active" id="register-form">
+                    <div class="form-header">
+                        <h2>Create Your Account</h2>
+                        <p>Start your career discovery journey today</p>
+                    </div>
+
+                    <!-- OAuth Registration Options -->
+                    <div class="oauth-section">
+                        <button class="oauth-btn google-btn" onclick="registerWithGoogle()">
+                            <div class="oauth-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                </svg>
+                            </div>
+                            <span>Continue with Google</span>
+                        </button>
+                    </div>
+
+                    <div class="auth-divider">
+                        <span>Or</span>
+                    </div>
+
+                    <!-- Email Registration -->
+                    <div class="form-step active" id="email-step">
+                        <form id="email-register-form">
+                            <div class="form-group">
+                                <label for="register-name">Full Name</label>
+                                <input type="text" id="register-name" name="name" placeholder="Enter your full name" autocomplete="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="register-email">Email Address</label>
+                                <input type="email" id="register-email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="register-password">Password</label>
+                                <div class="password-input">
+                                    <input type="password" id="register-password" name="password" placeholder="Create a password (min 6 characters)" autocomplete="new-password" required minlength="6">
+                                    <button type="button" class="password-toggle" onclick="togglePassword('register-password')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <small class="form-help">Password must be at least 6 characters long</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="terms-agree" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fas fa-user-plus"></i>
+                                Create Account
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Phone Number Step (Alternative) -->
+                    <div class="form-step" id="phone-step">
+                        <form id="phone-form">
+                            <div class="form-group">
+                                <label for="phone">Mobile Number</label>
+                                <div class="phone-input">
+                                    <select id="country-code" class="country-select">
+                                        <option value="+91">+91</option>
+                                        <option value="+1">+1</option>
+                                        <option value="+44">+44</option>
+                                        <option value="+61">+61</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" placeholder="1234567890" autocomplete="tel" required maxlength="15">
+                                </div>
+                                <small class="form-help">We'll send you a verification code</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Verification Code
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- OTP Verification Step -->
+                    <div class="form-step" id="otp-step">
+                        <form id="otp-form">
+                            <div class="form-group">
+                                <label for="otp">Verification Code</label>
+                                <div class="otp-input">
+                                    <input type="text" maxlength="1" class="otp-digit" data-index="0">
+                                    <input type="text" maxlength="1" class="otp-digit" data-index="1">
+                                    <input type="text" maxlength="1" class="otp-digit" data-index="2">
+                                    <input type="text" maxlength="1" class="otp-digit" data-index="3">
+                                    <input type="text" maxlength="1" class="otp-digit" data-index="4">
+                                    <input type="text" maxlength="1" class="otp-digit" data-index="5">
+                                </div>
+                                <small class="form-help">
+                                    Enter the 6-digit code sent to <span id="phone-display"></span>
+                                </small>
+                            </div>
+                            
+                            <div class="otp-actions">
+                                <button type="button" class="btn btn-secondary" onclick="resendOTP()">
+                                    <i class="fas fa-redo"></i>
+                                    Resend Code
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check"></i>
+                                    Verify Code
+                                </button>
+                            </div>
+                            
+                            <div class="otp-timer">
+                                <span>Resend code in <span id="timer">60</span>s</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <div class="auth-form" id="login-form">
+                    <div class="form-header">
+                        <h2>Welcome Back!</h2>
+                        <p>Continue your career discovery journey</p>
+                    </div>
+
+                    <!-- OAuth Login Options -->
+                    <div class="oauth-section">
+                        <button class="oauth-btn google-btn" onclick="signInWithGoogle()">
+                            <div class="oauth-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                </svg>
+                            </div>
+                            <span>Sign in with Google</span>
+                        </button>
+                    </div>
+
+                    <div class="auth-divider">
+                        <span>Or</span>
+                    </div>
+
+                    <!-- Email/Password Login -->
+                    <form id="email-login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="login-password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('login-password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember-me">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password" onclick="forgotPassword()">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                    </form>
+
+                    <div class="form-divider">
+                        <span>or</span>
+                    </div>
+
+                    <div class="quick-access">
+                        <h4>Quick Access</h4>
+                        <p>If you remember your details, you can continue directly:</p>
+                        <button class="btn btn-secondary btn-full" onclick="continueAsGuest()">
+                            <i class="fas fa-user"></i>
+                            Continue as Guest
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Terms and Privacy -->
+                <div class="auth-footer">
+                    <p>By continuing, you agree to our 
+                        <a href="privacy.html">Privacy Policy</a> and 
+                        <a href="terms.html">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Signing you in...</p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/google-config.js"></script>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/google-cloud-ai.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
