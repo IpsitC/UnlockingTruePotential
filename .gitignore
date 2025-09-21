@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Build/Dist
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Env/Secrets
+.env
+.env.*
