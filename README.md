@@ -13,6 +13,13 @@ A comprehensive web application designed to help students discover their true po
 - **Parent Support**: Dedicated section to help parents understand and support their child's journey
 - **Free Platform**: Complete access to all features at no cost
 
+## 🔗 Live Website
+**Visit Here:** https://unlocking-true-potential.web.app/  
+
+This is the live deployment of the project hosted on Firebase.  
+
+---
+
 ### Getting Started
 
 1. **Install Dependencies**:
